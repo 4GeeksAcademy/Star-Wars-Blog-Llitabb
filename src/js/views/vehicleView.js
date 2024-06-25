@@ -8,12 +8,10 @@ export const VehicleView = props => {
     const [starship, setStarship] = useState({})
 	const params = useParams();
     useEffect(()=>{
-        console.log("se cargo vista vehicle")
         fetch("https://www.swapi.tech/api/starships/" + params.Vehicle_id)
 					.then( (response)=> response.json() )
 					.then( (data)=> setStarship(data.result.properties) )
     },[])
-	console.log(params)
 	return (
 		<div className="jumbotron bg-dark text-warning p-4">
 			<h1 className="display-4">{starship.name}</h1>

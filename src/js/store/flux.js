@@ -5,7 +5,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			character: [],
 			planets: [],
 			favorites: "inicial desde flux",
-			misFavorites: []
+			myFavorites: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -13,19 +13,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().changeColor(0, "green");
 			},
 			changeFavorites: (titulo) => {
-				console.log("change favorites desde flux" + titulo)
-
 				setStore({ favorites: titulo });
 
 				const store = getStore();
 
-				if (store.misFavorites.includes(titulo)) {
-					console.log("Ya esta en favoritos")
+				if (store.myFavorites.includes(titulo)) {
 					setStore({
-						misFavorites: store.misFavorites.filter((favor)=>favor != titulo)
+						myFavorites: store.myFavorites.filter((favor)=>favor != titulo)
 					})
 				} else {
-					setStore({ misFavorites: [...store.misFavorites, titulo] })
+					setStore({ myFavorites: [...store.myFavorites, titulo] })
 				}
 				;
 			},

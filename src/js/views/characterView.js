@@ -8,12 +8,11 @@ export const CharacterView = props => {
     const [character, setCharacter] = useState({})
 	const params = useParams();
     useEffect(()=>{
-        console.log("se cargo vista character")
         fetch("https://www.swapi.tech/api/people/" + params.character_id)
 					.then( (response)=> response.json() )
 					.then( (data)=> setCharacter(data.result.properties) )
     },[])
-	console.log(params)
+	
 	return (
 		<div className="jumbotron bg-dark text-warning p-4">
 			<h1 className="display-4">{character.name}</h1>

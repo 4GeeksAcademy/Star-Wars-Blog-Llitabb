@@ -8,12 +8,10 @@ export const PlanetView = props => {
     const [planet, setplanet] = useState({})
 	const params = useParams();
     useEffect(()=>{
-        console.log("se cargo vista vehicle")
         fetch("https://www.swapi.tech/api/planets/" + params.planet_id)
 					.then( (response)=> response.json() )
 					.then( (data)=> setplanet(data.result.properties) )
     },[])
-	console.log(params)
 	return (
 		<div className="jumbotron bg-dark text-warning p-4">
 			<h1 className="display-4">{planet.name}</h1>
